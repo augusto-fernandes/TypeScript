@@ -1,15 +1,17 @@
 interface IUsuario {
     id: string;
     email: string;
+
+    //o ponto de interrogação torna o valor opcional
+    cargo?:'gerente' |'coordenador' | 'supervisor' | 'funcionario';
+
 }
 
-interface IAdmin extends IUsuario{
-    cargo: 'gerente' |'coordenador' | 'supervisor';
-}
 
-function redirecione(usuario: IUsuario | IAdmin){
-    if('cargo' in usuario){
-        //redirecionar para a area de administração
+
+function redirecione(usuario: IUsuario){
+    if(usuario.cargo){
+        //redirecionar(usuario.cargo);
 
     }else{
         //redirecionar para a area de usuario
