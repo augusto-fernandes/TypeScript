@@ -1,14 +1,17 @@
-/* const input = document.getElementById("input") as HTMLInputElement;
-
-input.addEventListener("input", (event) => {
-  const i = event.currentTarget as HTMLInputElement;
-});
- */
-
-//Generic Types
-
-function AdicionaApendiceALista<T>(array: any[], valor: T){
-    return array.map(() => valor);
+interface IUsuario {
+    id: string;
+    email: string;
 }
 
-AdicionaApendiceALista([1, 2, 3],2);
+interface IAdmin extends IUsuario{
+    cargo: 'gerente' |'coordenador' | 'supervisor';
+}
+
+function redirecione(usuario: IUsuario | IAdmin){
+    if('cargo' in usuario){
+        //redirecionar para a area de administração
+
+    }else{
+        //redirecionar para a area de usuario
+    }
+}
