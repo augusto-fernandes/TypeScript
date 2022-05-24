@@ -1,19 +1,25 @@
-interface IUsuario {
-    id: string;
-    email: string;
-
-    //o ponto de interrogação torna o valor opcional
-    cargo?:'gerente' |'coordenador' | 'supervisor' | 'funcionario';
-
+interface Cachorro{
+     nome: string;
+     idade:number;
+     parqueFavorito?: string;
 }
 
+type CachorroSomenteLeitura ={
+    //-? remove os valores opcionais
+    +readonly[k in keyof Cachorro] -?: Cachorro[k]
+}
 
+class MeuCachorro implements CachorroSomenteLeitura{
+    nome;
+    idade;
+    parqueFavorito;
 
-function redirecione(usuario: IUsuario){
-    if(usuario.cargo){
-        //redirecionar(usuario.cargo);
-
-    }else{
-        //redirecionar para a area de usuario
+    constructor(nome,idade){
+        this.nome = nome;
+        this.idade = idade;
+        
     }
 }
+
+const cao = new MeuCachorro('Apolo',14);
+
