@@ -1,9 +1,14 @@
-import $ from 'jquery';
+interface Pessoa{
+    nome: string;
+    idade: number;
+    nacionalidade: string
+}
 
-$.fn.extend({
-    novaFuncao(){
-        console.log('Chamou nova funcao');
-    }
-});
+interface Brasileiro extends Omit<Pessoa, "nacionalidade">{
 
-$('body').novaFuncao();
+}
+
+const brasileiro: Brasileiro ={
+idade: 10,
+nome: 'joao'
+}
